@@ -8,6 +8,10 @@ weight = 30  # Order that this section will appear.
 title = "Skills"
 subtitle = ""
 
+[design.background]
+  # Background color.
+  color = "#AFEEEE"
+  
 # Showcase personal skills or business features.
 # 
 # Add/remove as many `[[feature]]` blocks below as you like.

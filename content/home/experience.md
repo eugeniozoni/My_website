@@ -8,6 +8,10 @@ weight = 40  # Order that this section will appear.
 title = "Experience"
 subtitle = ""
 
+[design.background]
+  # Background color.
+  color = "#E0FFFF"
+
 # Date format for experience
 #   Refer to https://sourcethemes.com/academic/docs/customization/#date-format
 date_format = "Jan 2006"
