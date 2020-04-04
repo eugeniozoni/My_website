@@ -18,27 +18,70 @@ date_format = "Jan 2006"
 #   Leave `date_end` empty if it's your current employer.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 [[experience]]
-  title = "CEO"
-  company = "GenCoin"
+  title = "Postdoctoral researcher"
+  company = "Bern University"
   company_url = ""
-  location = "California"
-  date_start = "2017-01-01"
+  location = "Switzerland"
+  date_start = "2016-07-01"
   date_end = ""
   description = """
   Responsibilities include:
   
-  * Analysing
-  * Modelling
-  * Deploying
+  * Performing experiments
+  * Analysing results
+  * Supervising master and graduate students
+  * Writing reports
+  * Writing research publications
+  * Writing grants
+  * Deputy for animal studies
   """
 
 [[experience]]
-  title = "Professor"
-  company = "University X"
+  title = "Visiting scientist"
+  company = "Helmholtz Zentrum Munich"
   company_url = ""
-  location = "California"
-  date_start = "2016-01-01"
-  date_end = "2016-12-31"
-  description = """Taught electronic engineering and researched semiconductor physics."""
+  location = "Germany"
+  date_start = "2017-01-01"
+  date_end = "2017-12-01"
+  description = """
+  Responsibilities include:
+  
+  * Analysing MALDI-MSI data
+  * Familiarizing with MALDI-MSI
+  """
+  
+[[experience]]
+  title = "PhD student"
+  company = "Leiden University Medical Center"
+  company_url = ""
+  location = "The Netherlands"
+  date_start = "2012-01-01"
+  date_end = "2016-06-02"
+  description = """
+  Responsibilities include:
+  
+  * Performing experiments
+  * Analysing results
+  * Supervising master students
+  * Writing reports
+  * Writing research publications
+  * Organizing conferences
+  """
+  
+[[experience]]
+  title = "Research intern"
+  company = "IFOM Milan"
+  company_url = ""
+  location = "Italy"
+  date_start = "2010-10-01"
+  date_end = "2011-12-31"
+  description = """
+  Responsibilities include:
+  
+  * Performing experiments
+  * Analysing results
+  * Supporting research activities
+  """
+
 
 +++

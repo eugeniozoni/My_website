@@ -15,21 +15,22 @@ subtitle = ""
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons
 
 [[feature]]
+  icon = "flask"
+  icon_pack = "fas"
+  name = "Lab work"
+  description = "I have 10 years work experience with in vitro cellular models (2D and 3D), standard molecular biology methods and optimization of functional assays to characterize therapy response and biological properties of cancer models"
+  
+[[feature]]
   icon = "r-project"
   icon_pack = "fab"
-  name = "R"
-  description = "90%"
+  name = "Data analysis"
+  description = "I work with R to analyse and visualize my data. I am familiar with R markdown, R blogdown and R shiny for reproducible reporting and interactive data visualization"
   
 [[feature]]
-  icon = "chart-line"
+  icon = "microscope"
   icon_pack = "fas"
-  name = "Statistics"
-  description = "100%"  
+  name = "Preclinical Research"
+  description = "I have 5 years work experience with establishment of patient derived xenograts and use of GEMMs for the study of primary and metastatic urological cancers"
   
-[[feature]]
-  icon = "camera-retro"
-  icon_pack = "fas"
-  name = "Photography"
-  description = "10%"
 
 +++
