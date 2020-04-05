@@ -1,13 +1,13 @@
 ---
 # Course title, summary, and position.
-linktitle: Section under construction
-summary: Learn how to use Academic's docs layout for publishing online courses, software documentation, and tutorials.
+linktitle: Access personal projects section
+summary: In this section you can navigate through my personal projects. These are small pieces of work which I do in my free time.
 weight: 1
 
 # Page metadata.
-title: Overview
-date: "2018-09-09T00:00:00Z"
-lastmod: "2018-09-09T00:00:00Z"
+title: Welcome to my personal projects!
+date: "2020-04-05T00:00:00Z"
+lastmod: "2020-04-05T00:00:00Z"
 draft: false  # Is this a draft? true/false
 toc: true  # Show table of contents? true/false
 type: docs  # Do not modify.
@@ -21,42 +21,36 @@ menu:
     weight: 1
 ---
 
-## Flexibility
+## Overview
 
-This feature can be used for publishing content such as:
+This section includes different personal projects and contents such as:
 
-* **Online courses**
-* **Project or software documentation**
+* **Data analysis with R**
+* **Data visualization with R**
 * **Tutorials**
+* **This website**
 
-The `courses` folder may be renamed. For example, we can rename it to `docs` for software/project documentation or `tutorials` for creating an online course.
+The aim of this section is to provide a tool to share my knowledge with the community and receive inputs and feedback on my work. The codes and raw data for each project are available on [**my GitHub repositories**](https://github.com/eugeniozoni). 
 
-## Delete tutorials
+## Data analysis with R
 
-**To remove these pages, delete the `courses` folder and see below to delete the associated menu link.**
+**Section under construction**
 
-## Update site menu
+## Data visualization with R
 
-After renaming or deleting the `courses` folder, you may wish to update any `[[main]]` menu links to it by editing your menu configuration at `config/_default/menus.toml`.
+This `section` is under construction.
 
 For example, if you delete this folder, you can remove the following from your menu configuration:
 
 ```toml
 [[main]]
-  name = "Courses"
-  url = "courses/"
-  weight = 50
+Example of chunk of code
 ```
 
-Or, if you are creating a software documentation site, you can rename the `courses` folder to `docs` and update the associated *Courses* menu configuration to:
+## Tutorials
 
-```toml
-[[main]]
-  name = "Docs"
-  url = "docs/"
-  weight = 50
-```
+This section is under construction.
 
-## Update the docs menu
+## This Website
 
-If you use the *docs* layout, note that the name of the menu in the front matter should be in the form `[menu.X]` where `X` is the folder name. Hence, if you rename the `courses/example/` folder, you should also rename the menu definitions in the front matter of files within `courses/example/` from `[menu.example]` to `[menu.<NewFolderName>]`.
+This section is under construction. I will include here a description of how I have build this website for free with R blogdown.

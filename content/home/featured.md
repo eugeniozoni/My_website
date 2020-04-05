@@ -13,7 +13,7 @@ subtitle = ""
 
 [design.background]
   # Background color.
-  color = "#AFEEEE"
+  color = "#B0E0E6"
 
 [content]
   # Page type to display. E.g. post, talk, or publication.

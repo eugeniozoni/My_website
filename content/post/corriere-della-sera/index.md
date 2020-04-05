@@ -1,5 +1,5 @@
 ---
-title: 'Once I appeared in the news paper'
+title: 'Once I appeared in the newspaper'
 subtitle: 'In 2016 I was interviewed by Corriere della Sera and discussed with Enzo Riboni my work experience abroad'
 summary: In 2016 I was interviewed by Corriere della Sera and discussed with Enzo Riboni my work experience abroad.
 authors:

@@ -10,7 +10,7 @@ subtitle = ""
 
 [design.background]
   # Background color.
-  color = "#AFEEEE"
+  color = "#B0E0E6"
   
 # Showcase personal skills or business features.
 # 
