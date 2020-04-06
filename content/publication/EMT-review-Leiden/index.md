@@ -1,7 +1,7 @@
 ---
 title: "Epithelial Plasticity in Cancer: Unmasking a MicroRNA Network for TGF-β-, Notch-, and Wnt-Mediated EMT"
 authors:
-- Zoni E
+- '**Zoni E**'
 - van der Pluijm G
 - Gray PC
 - Kruithof-de Julio M

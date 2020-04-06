@@ -1,7 +1,7 @@
 ---
 title: "Emerging aspects of microRNA interaction with TMPRSS2-ERG and endocrine therapy"
 authors:
-- Zoni E
+- '**Zoni E**'
 - Karkampouna S
 - Thalmann GN
 - Kruithof-de Julio M

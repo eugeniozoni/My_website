@@ -1,7 +1,7 @@
 ---
 title: "The role of microRNAs in bone metastasis"
 authors:
-- Zoni E
+- '**Zoni E**'
 - van der Pluijm G
 date: "2016-07-08T00:00:00Z"
 doi: "10.1016/j.jbo.2016.04.002"

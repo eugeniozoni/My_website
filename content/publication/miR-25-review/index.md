@@ -1,7 +1,7 @@
 ---
 title: "miR-25, integrin and cancer invasiveness"
 authors:
-- Zoni E
+- '**Zoni E**'
 - Kruithof-de Julio M
 - van der Pluijm
 date: "2015-08-24T00:00:00Z"

@@ -13,7 +13,7 @@ authors:
 - Snaar-Jagalska E
 - Spahn M
 - Kruithof-de Julio M
-- Zoni E
+- '**Zoni E**'
 
 date: "2019-06-25T00:00:00Z"
 doi: "10.1186/s12885-019-5819-6"

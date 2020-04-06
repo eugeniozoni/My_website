@@ -3,7 +3,7 @@ title: "miRNA profiling in colorectal cancer highlights miR-1 involvement in MET
 authors:
 - Reid JF
 - Sokolova V
-- Zoni E
+- '**Zoni E**'
 - Lampis A
 - Pizzamiglio S
 - Bertan C

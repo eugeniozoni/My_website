@@ -10,7 +10,10 @@ subtitle = ""
 
 [design.background]
   # Background color.
-  color = "#B0E0E6"
+  color = "#BC986A"
+  
+# Text color (true=light or false=dark).
+  text_color_light = true
   
 # Showcase personal skills or business features.
 # 

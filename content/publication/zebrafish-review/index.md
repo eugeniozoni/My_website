@@ -4,7 +4,7 @@ authors:
 - Chen L
 - Groenewoud A
 - Tulotta C
-- Zoni E
+- '**Zoni E**'
 - Kruithof-de Julio M
 - van der Horst G
 - van der Pluijm G

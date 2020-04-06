@@ -12,7 +12,10 @@ subtitle = ""
 
 [design.background]
   # Background color.
-  color = "#B0C4DE"
+  color = "#DAAD86"
+  
+  # Text color (true=light or false=dark).
+  text_color_light = false
 
 [content]
   # Page type to display. E.g. post, talk, or publication.
@@ -41,7 +44,7 @@ subtitle = ""
   #   2 = Compact
   #   3 = Card
   #   4 = Citation (publication only)
-  view = 1
+  view = 4
   
 
   

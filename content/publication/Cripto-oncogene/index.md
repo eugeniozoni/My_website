@@ -1,7 +1,7 @@
 ---
 title: "CRIPTO and its signaling partner GRP78 drive the metastatic phenotype in human osteotropic prostate cancer"
 authors:
-- Zoni E
+- '**Zoni E**'
 - Chen L
 - Karkampouna S
 - Granchi Z

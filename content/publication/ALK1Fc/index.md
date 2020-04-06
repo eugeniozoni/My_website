@@ -2,7 +2,7 @@
 title: "ALK1Fc Suppresses the Human Prostate Cancer Growth in in Vitro and in Vivo Preclinical Models"
 authors:
 - Astrologo L
-- Zoni E
+- '**Zoni E**'
 - Karkampouna S
 - Gray PC
 - Klima I

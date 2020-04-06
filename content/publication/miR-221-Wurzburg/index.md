@@ -7,7 +7,7 @@ authors:
 - Sokolakis I
 - Kneitz S
 - Kruithof-de Julio M
-- Zoni E
+- '**Zoni E**'
 - Rech A
 - Schilling B
 - Kübler H

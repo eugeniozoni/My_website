@@ -3,7 +3,7 @@ title: "Metastases in Prostate Cancer"
 authors:
 - La Manna F
 - Karkampouna S
-- Zoni E
+- '**Zoni E**'
 - De Menna M
 - Hensel J
 - Thalmann GN

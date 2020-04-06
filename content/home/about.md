@@ -14,6 +14,9 @@ author = "admin"
 
 [design.background]
   # Background color.
-  color = "#B0C4DE"
+  color = "#DAAD86"
+  
+  # Text color (true=light or false=dark).
+  text_color_light = false
 
 +++

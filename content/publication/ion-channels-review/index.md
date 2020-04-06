@@ -3,7 +3,7 @@ title: "Store-Operated Ca2+ Entry as a Prostate Cancer Biomarker - a Riddle with
 authors:
 - Kappel S
 - Marques IJ
-- Zoni E
+- '**Zoni E**'
 - Stokłosa P
 - Peinelt C
 - Mercader N

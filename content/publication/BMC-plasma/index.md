@@ -1,7 +1,7 @@
 ---
 title: "Preoperative plasma fatty acid metabolites inform risk of prostate cancer progression and may be used for personalized patient stratification"
 authors:
-- Zoni E 
+- '**Zoni E**' 
 - Minoli M 
 - Bovet C 
 - Wehrhan A 

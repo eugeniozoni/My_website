@@ -3,7 +3,7 @@ title: "The Effects of miR-20a on p21: Two Mechanisms Blocking Growth Arrest in 
 authors:
 - Sokolova V
 - Fiorino A
-- Zoni E
+- '**Zoni E**'
 - Crippa E
 - Reid JF
 - Gariboldi M

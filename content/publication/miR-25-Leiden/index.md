@@ -1,7 +1,7 @@
 ---
 title: "miR-25 Modulates Invasiveness and Dissemination of Human Prostate Cancer Cells via Regulation of αv- and α6-Integrin Expression"
 authors:
-- Zoni E
+- '**Zoni E**'
 - van der Horst G
 - van de Merbel AF
 - Chen L

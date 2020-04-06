@@ -1,7 +1,7 @@
 ---
 title: "Therapeutic Targeting of CD146/MCAM Reduces Bone Metastasis in Prostate Cancer"
 authors:
-- Zoni E
+- '**Zoni E**'
 - Astrologo L
 - Ng CKY
 - Piscuoglio S
