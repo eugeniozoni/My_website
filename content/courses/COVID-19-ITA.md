@@ -1,20 +1,20 @@
 ---
-title: Example Project 2
-linktitle: Tips 3-4
+title: Test Project
+linktitle: Test project
 toc: true
 type: docs
-date: "2019-05-05T00:00:00+01:00"
+date: "2020-04-08T00:00:00+01:00"
 draft: false
 menu:
   example:
-    parent: Example Topic
-    weight: 2
+    parent: Data analysis with R
+    weight: 1
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 2
+weight: 
 ---
 
-This will be project 2 or page 2 from project one
+This will be COVID-19 ITA project
 
 ## Section XX
 
