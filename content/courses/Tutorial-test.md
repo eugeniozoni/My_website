@@ -1,6 +1,6 @@
 ---
 title: Tutorial Section Under construction
-linktitle: Tutorial under construction
+linktitle: Section under construction
 toc: true
 type: docs
 date: "2020-04-08T00:00:00+01:00"

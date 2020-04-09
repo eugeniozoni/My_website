@@ -2,7 +2,7 @@
 # Page metadata.
 title: Welcome to my personal projects!
 date: "2020-04-05T00:00:00Z"
-lastmod: "2020-04-05T00:00:00Z"
+lastmod: "2020-04-09T00:00:00Z"
 draft: false  # Is this a draft? true/false
 toc: true  # Show table of contents? true/false
 type: docs  # Do not modify.
@@ -29,23 +29,16 @@ The aim of this section is to provide a tool to share my knowledge with the comm
 
 ## Data analysis with R
 
-**Section under construction**
+The **aim** of this section is to share with you some examples of codes for data analysis that I have assembled for different type of data. 
 
 ## Data visualization with R
 
-This `section` is under construction.
-
-For example, if you delete this folder, you can remove the following from your menu configuration:
-
-```toml
-[[main]]
-Example of chunk of code
-```
+In this section I have combined some small projects aimed to visualize different type of data. This is mainly a graphic section, where I provide some codes to look at certain data from a **qualitative** point of view.
 
 ## Tutorials
 
-This section is under construction.
+Here you will find some basic codes to customize your data. This section is intended as a **cheat sheet** for basic R functions which I think are of interest when approaching R for this first time to prepare your data before ready for processing.
 
 ## This Website
 
-This section is under construction. I will include here a description of how I have build this website for free with R blogdown.
+In this section I present the project aimed to build and customize **this website.**

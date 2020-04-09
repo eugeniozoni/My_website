@@ -111,7 +111,7 @@ dev.off()
 
 ## **Credits**
 
-Credits for the feasibility of this project should be given to the authors of [**bibliometrix**](https://bibliometrix.org/) and [**STHA**](http://www.sthda.com/english/wiki/text-mining-and-word-cloud-fundamentals-in-r-5-simple-steps-you-should-know) which is an icredibly well done training website, which contains many tutorials on data analysis and visualization using R software and packages.
+Credits for the feasibility of this project should be given to the authors of [**bibliometrix**](https://bibliometrix.org/) and [**STHA**](http://www.sthda.com/english/wiki/text-mining-and-word-cloud-fundamentals-in-r-5-simple-steps-you-should-know) which is an icredibly well done training website, with many tutorials on data analysis and visualization using R software and packages.
 
 
 

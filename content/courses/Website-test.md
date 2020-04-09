@@ -1,6 +1,6 @@
 ---
 title: This website section Under construction
-linktitle: This website Under construction
+linktitle: This section is under construction
 toc: true
 type: docs
 date: "2020-04-08T00:00:00+01:00"
