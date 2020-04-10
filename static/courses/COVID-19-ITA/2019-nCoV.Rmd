@@ -1,0 +1,333 @@
+---
+title: "COVID-19 - Italy"
+author:
+  name: Eugenio Zoni
+date: "`r format(Sys.time(), '%Y %B, %d')`"
+output:
+  html_document:
+    df_print: paged
+    number_sections: no
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, echo=FALSE, message=FALSE, results="hide"}
+knitr::opts_chunk$set(cache = FALSE, error= FALSE)
+```
+
+## Objective
+
+The objective is to represent the current and future incidence for COVID-19 in Italy. For this, we use the *projections* and the *incidence* library. Details about the algorithm used in the package are available here: https://cloud.r-project.org/web/packages/projections/index.html and published here: https://www.sciencedirect.com/science/article/pii/S1755436517300245?via%3Dihub#fig0010 
+
+**IMPORTANT**
+In this workflow we employ standard functions within the *projections* and *incidence* package to represent the evolution of the infection and understand its possible evolution. The data and processing represented in this workflow should be taken as starting point and serve as initial structure of a code for more sofisticated processing of these data. 
+
+## Load libraries
+```{r , warning=FALSE, message=FALSE}
+library(projections)
+library(incidence)
+library(outbreaks)
+library(RCurl)
+library(dplyr)
+library(ggplot2)
+library(distcrete)
+library(epitrix)
+library(pastecs)
+library(tidyr)
+library(magrittr)
+library(EpiEstim)
+library(scales)
+
+getwd()
+
+```
+
+## Load data
+
+Data related to current situation in Italy are updated daily by the italian "Protezione Civile" and downloaded from here: https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv. First we load the data in R and we save them as `.csv` file.
+```{r , warning=FALSE, message=FALSE}
+URL <- "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv"
+x <- getURL(URL)
+covid_19_ITA <- read.csv(textConnection(x))
+write.csv(`covid_19_ITA`, "covid_19_ITA.csv")
+```
+
+## Clean-up the data
+
+We rename columns:
+```{r , warning=FALSE, message=FALSE}
+mydata_ITA<-dplyr::rename(covid_19_ITA,
+                   
+                   dates_D_T = data,
+                   country = stato,
+                   hospitalized_symptomatic = ricoverati_con_sintomi,
+                   icu = terapia_intensiva,
+                   hospitalized_total = totale_ospedalizzati,
+                   quarantine_home = isolamento_domiciliare,
+                   positive_total_up_to_date = totale_positivi,
+                   new_positive_up_to_date = nuovi_positivi,
+                   dismissed_recovered = dimessi_guariti,
+                   deaths = deceduti,
+                   total_cases = totale_casi,
+                   tests = tamponi
+                   )
+```
+
+The dates include time (hrs). Therefore, we remove the string related to time of the day when data are published.
+```{r , warning = FALSE, message=FALSE}
+mydata_ITA <- mydata_ITA %>%
+  dplyr::mutate(dates = gsub(pattern = "T.*", replacement = "", dates_D_T))
+mydata_ITA
+```
+
+Then we need to format the data in a suitable format to generate the `incidence` object. For this we make a new df. This df will have a number of rows equal to the `new_positive_up_to_date` column. In other words, we need to have a df where each row corresponds to one patient.
+```{r , warning=FALSE, message=FALSE}
+df.expanded_ITA <- mydata_ITA[rep(row.names(mydata_ITA), mydata_ITA$new_positive_up_to_date), 2:16]
+```
+
+We also make another df with the same logic above, but we use the `positive_total_up_to_date` column instead. This df will be used to subset the patient based on their current condition.
+```{r , warning=FALSE, message=FALSE}
+df.expanded_total_ITA <- mydata_ITA[rep(row.names(mydata_ITA), mydata_ITA$positive_total_up_to_date), 2:16]
+```
+
+Then we create a new column `groups` where we subset the data of the **new cases** by three categories: * **hospital** : here we include the patients identified as *hospitalized_symptomatic*
+* **icu** : here we include the patients in intensive care (*icu*)
+* **home** : here we include the patients that are in *quarantine_home*
+```{r , warning=FALSE, message=FALSE}
+groups<-c(replicate(101, "hospital"), replicate(26, "icu"), replicate(94, "home"),
+          replicate(114, "hospital"), replicate(35, "icu"), replicate(162, "home"),
+          replicate(128, "hospital"), replicate(36, "icu"), replicate(221, "home"),
+          replicate(248, "hospital"), replicate(56, "icu"), replicate(284, "home"),
+          replicate(345, "hospital"), replicate(64, "icu"), replicate(412, "home"),
+          replicate(401, "hospital"), replicate(105, "icu"), replicate(543, "home"),
+          replicate(639, "hospital"), replicate(140, "icu"), replicate(798, "home"),
+          replicate(742, "hospital"), replicate(166, "icu"), replicate(927, "home"),
+          replicate(1034, "hospital"), replicate(229, "icu"), replicate(1000, "home"),
+          replicate(1346, "hospital"), replicate(295, "icu"), replicate(1065, "home"),
+          replicate(1790, "hospital"), replicate(351, "icu"), replicate(1155, "home"),
+          replicate(2394, "hospital"), replicate(462, "icu"), replicate(1060, "home"),
+          replicate(2651, "hospital"), replicate(567, "icu"), replicate(1843, "home"),
+          replicate(3557, "hospital"), replicate(650, "icu"), replicate(2180, "home"),
+          replicate(4316, "hospital"), replicate(733, "icu"), replicate(2936, "home"),
+          replicate(5038, "hospital"), replicate(877, "icu"), replicate(2599, "home"),
+          replicate(5838, "hospital"), replicate(1028, "icu"), replicate(3724, "home"),
+          replicate(6650, "hospital"), replicate(1153, "icu"), replicate(5036, "home"),
+          replicate(7426, "hospital"), replicate(1328, "icu"), replicate(6201, "home"),
+          replicate(8372, "hospital"), replicate(1518, "icu"), replicate(7860, "home"),
+          replicate(9663, "hospital"), replicate(1672, "icu"), replicate(9268, "home"),
+          replicate(11025, "hospital"), replicate(1851, "icu"), replicate(10197, "home"),
+          replicate(12894, "hospital"), replicate(2060, "icu"), replicate(11108, "home"),
+          replicate(14363, "hospital"), replicate(2257, "icu"), replicate(12090, "home"),
+          replicate(15757, "hospital"), replicate(2498, "icu"), replicate(14935, "home"),
+          replicate(16020, "hospital"), replicate(2655, "icu"), replicate(19185, "home"),
+          replicate(17708, "hospital"), replicate(2857, "icu"), replicate(22116, "home"),
+          replicate(19846, "hospital"), replicate(3009, "icu"), replicate(23783, "home"),
+          replicate(20692, "hospital"), replicate(3204, "icu"), replicate(26522, "home"),
+          replicate(21937, "hospital"), replicate(3396, "icu"), replicate(28697, "home"),
+          replicate(23112, "hospital"), replicate(3489, "icu"), replicate(30920, "home"),
+          replicate(24753, "hospital"), replicate(3612, "icu"), replicate(33648, "home"),
+          replicate(26029, "hospital"), replicate(3732, "icu"), replicate(36653, "home"),
+          replicate(26676, "hospital"), replicate(3856, "icu"), replicate(39533, "home"),
+          replicate(27386, "hospital"), replicate(3906, "icu"), replicate(42588, "home"),
+          replicate(27795, "hospital"), replicate(3981, "icu"), replicate(43752, "home"),
+          replicate(28192, "hospital"), replicate(4023, "icu"), replicate(45420, "home"),
+          replicate(28403, "hospital"), replicate(4035, "icu"), replicate(48134, "home"),
+          replicate(28540, "hospital"), replicate(4053, "icu"), replicate(50456, "home"),
+          replicate(28741, "hospital"), replicate(4068, "icu"), replicate(52579, "home"),
+          replicate(29010, "hospital"), replicate(3994, "icu"), replicate(55270, "home"),
+          replicate(28949, "hospital"), replicate(3977, "icu"), replicate(58320, "home"),
+          replicate(28976, "hospital"), replicate(3898, "icu"), replicate(60313, "home"),
+          replicate(28718, "hospital"), replicate(3792, "icu"), replicate(61557, "home"),
+          replicate(28485, "hospital"), replicate(3693, "icu"), replicate(63084, "home"),
+          replicate(28399, "hospital"), replicate(3605, "icu"), replicate(64873, "home")
+          )
+df.expanded_total_ITA$groups<-groups
+```
+
+## Daily incidence
+
+With the function `incidence` we can compute the daily incidence by setting the variable `interval` = 1. The interval can also be changed to whatever interval.
+**IMPORTANT : ** It should be noted that for this we include only the df generated by calculating the `new_positive_up_to_date`
+```{r , warning=FALSE, message=FALSE}
+dat <- as.Date(df.expanded_ITA$dates)
+class(dat)
+i_ITA<-incidence(dat, interval = 1)
+plot(i_ITA)
+```
+
+We can also show the `incidence` obtained using the `df.expanded_total` as this will allow us to represent the distribution of the different groups.
+
+**IMPORTANT : ** there is not information in the data from the italian "Protezione Civile" related to the subset of the `new_positive_up_to_date`. In other words we do not know, among the new daily cases, how many patients end up in icu or at home or in the hospital. Therefore, this plot might be usefull to represent the trend of the data, but not suitable to calculate the incidence which we base on the numebr of new cases only.
+```{r , warning=FALSE, message=FALSE}
+dat_total <- as.Date(df.expanded_total_ITA$dates)
+class(dat_total)
+i_total_ITA<-incidence(dat_total, interval = 1, groups= df.expanded_total_ITA$groups)
+plot(i_total_ITA)
+```
+
+We also make the same incidence object as above but without groups to be used later for the prediction:
+```{r , warning=FALSE, message=FALSE}
+i_total_ITA_ng<-incidence(dat_total, interval = 1)
+plot(i_total_ITA_ng)
+```
+
+## Modelling incidence
+
+As explained in the vignette of the *incidence* package, incidence data, excluding zeros, can be modelled using log-linear regression of the form: log(y) = r x t + b where y is the incidence, r is the growth rate, t is the number of days since a specific point in time (typically the start of the outbreak), and b is the intercept.
+
+We split the modelling by setting `split=as.Date("2020-03-10")` which is the date of the shutdown decided by the Italian Government. This will allow us to visualize the estimated incidence also before the shutdown.
+```{r , warning=FALSE, message=FALSE}
+early.fit_ITA <-  incidence::fit(i_ITA, split = as.Date("2020-03-10"))
+plot(i_ITA, fit = early.fit_ITA) + labs(title = "Observed and modelled incidence of COVID-19", subtitle = "Total new positive cases up to date - ITA")
+early.fit_ITA
+```
+From this we can see that doubling time in days has started to increase if we compare the values *before* VS *after* shutdown, which might be an indication that the shutdown is somehow working.
+
+We can also calculate the fit by assuming that the peak of the epidemic already happend at the highest point reached so far:
+```{r , warning=FALSE, message=FALSE}
+late.fit_ITA <-  incidence::fit(i_ITA, split = as.Date("2020-03-21"))
+plot(i_ITA, fit =late.fit_ITA) + labs(title = "Observed and modelled incidence of COVID-19", subtitle = "Total new positive cases up to date - ITA")
+late.fit_ITA
+```
+
+
+## Serial Interval
+
+It was proposed that parameters to estimate the serial interval correspond to mean 5.2 and SD 2.8 days as documented here: https://www.medrxiv.org/content/10.1101/2020.03.05.20031815v1
+```{r , warning=FALSE, message=FALSE}
+mu <- 5.2  # days
+sigma <- 2.8  # days
+params_ITA_n <- gamma_mucv2shapescale(mu, sigma/mu)
+
+si_ITA_n <- distcrete("gamma", shape = params_ITA_n$shape,
+                scale = params_ITA_n$scale,
+                interval = 1, w = 0)
+si_ITA_n
+
+plot(1:50, si_ITA_n$d(1:50), type = "h", lwd = 3, col = "navy",
+     main = "Serial interval ITA", xlab = "Days after onset",
+     ylab = "Relative infectiousness")
+```
+
+## Reproduction Number (R0)
+
+Estimation of the reproduction number **before** shutdown calculated from an incidence object generated with the new cases. For this we use the `si_ITA_n` object generated above (mean 5.2 and SD 2.8). For this part we follow the approach proposed by Tim Churches here: https://timchurches.github.io/blog/posts/2020-02-18-analysing-covid-19-2019-ncov-outbreak-data-with-r-part-1/ 
+```{r , message=FALSE, warning=FALSE}
+growth_R0_before <- lm2R0_sample(early.fit_ITA$before$model, si_ITA_n)
+hist(growth_R0_before, col = "grey", border = "white", main = "Distribution of R0 - new positive cases, before 2020-03-10")
+summary(growth_R0_before)
+```
+
+Estimation of the reproduction number **after** shutdown calculated from an incidence object generated with the new cases. Also in this case we use the `si_ITA_n` object generated above (mean 5.2 and SD 2.8):
+```{r , message=FALSE, warning=FALSE}
+growth_R0_after <- lm2R0_sample(early.fit_ITA$after$model, si_ITA_n)
+hist(growth_R0_after, col = "grey", border = "white", main = "Distribution of R0 - new positive cases, after 2020-03-10")
+summary(growth_R0_after)
+```
+By comparing the two median values we can see that R0 is also decreasing slowly over time. 
+
+We can also estimate R0 using the late fit. For this we use the `late.fit_ITA` object generated above with the split point set to 2020-03-21.
+```{r , message=FALSE, warning=FALSE}
+growth_R0_after_peak <- lm2R0_sample(late.fit_ITA$after$model, si_ITA_n)
+hist(growth_R0_after_peak, col = "grey", border = "white", main = "Distribution of R0 - new positive cases, after 2020-03-19")
+summary(growth_R0_after_peak)
+```
+
+## Projections
+
+Based on these data we predict future incidence assuming the reproduction numbers estimated above, from today.
+```{r , warning=FALSE, message=FALSE}
+set.seed(1)
+pred_ITA_new_before_shut <- project(i_ITA[1:15], R = median(growth_R0_before), si = si_ITA_n, n_days = 10, n_sim = 1000)
+pred_ITA_new_before_shut
+plot(pred_ITA_new_before_shut) + labs(title="Future Incidence (R = 2.04) - based on growth of new positive cases in the first 15 days of diffusion")
+
+set.seed(1)
+pred_ITA_new_after_shut <- project(i_ITA[16:46], R = median(growth_R0_after), si = si_ITA_n, n_days = 10, n_sim = 1000)
+pred_ITA_new_after_shut
+plot(pred_ITA_new_after_shut) + labs(title="Future Incidence (R = 1.04) - based on new positive cases growth after shutdown")
+
+set.seed(1)
+pred_ITA_new_after_peak <- project(i_ITA[27:46], R = median(growth_R0_after_peak), si = si_ITA_n, n_days = 10, n_sim = 1000)
+pred_ITA_new_after_peak
+plot(pred_ITA_new_after_peak) + labs(title="Future Incidence (R = 0.89) - based on new positive cases growth after peak")
+```
+
+We can add on the real incidence data the projection:
+```{r , message=FALSE, warning=FALSE}
+plot(i_ITA) %>% add_projections(pred_ITA_new_after_shut, boxplots = FALSE) %>% add_projections(pred_ITA_new_before_shut, boxplots = FALSE) %>% add_projections(pred_ITA_new_after_peak, boxplots = FALSE)
+```
+
+we can also check the cumulative prediction
+```{r , warning=FALSE, message=FALSE}
+pred_cum_new_before <- cumulate(pred_ITA_new_before_shut) # cumulative predictions
+plot(pred_cum_new_before) # plot cumulative predictions
+
+pred_cum_new_after_peak <- cumulate(pred_ITA_new_after_peak) 
+plot(pred_cum_new_after_peak) 
+```
+
+And have an estimation of the average cumulative prediction per day:
+```{r , warning=FALSE, message=FALSE}
+apply(pred_cum_new_before, 1, mean)
+apply(pred_cum_new_after_peak, 1, mean)
+```
+
+## Effective reproduction number
+
+For the importance and significance of estimating the effective reproduction number we follow the approach proposed by Tim Chrurches and described here: https://timchurches.github.io/blog/posts/2020-02-18-analysing-covid-19-2019-ncov-outbreak-data-with-r-part-1/ 
+This is important to track the effectiveness of decision of the government on future steps. 
+```{r , warning=FALSE, message=FALSE}
+plot_Ri <- function(estimate_R_obj) {
+    p_I <- plot(estimate_R_obj, "incid", add_imported_cases = FALSE)  # plots the incidence
+    p_SI <- plot(estimate_R_obj, "SI")  # plots the serial interval distribution
+    p_Ri <- plot(estimate_R_obj, "R")
+    return(gridExtra::grid.arrange(p_I, p_SI, p_Ri, ncol = 1))
+}
+ITA_new_res_parametric_si <- estimate_R(i_ITA, 
+    method = "parametric_si", config = make_config(list(mean_si = 5.2, 
+        std_si = 2.8
+        )))
+
+plot_Ri(ITA_new_res_parametric_si)
+```
+
+We now use the same strategy employed here: https://timchurches.github.io/blog/posts/2020-02-18-analysing-covid-19-2019-ncov-outbreak-data-with-r-part-1/
+i.e. retain the mean SI estimated by Ganyani et al. of 5.2 days, with an SD of 2.8, but we allow the mean to vary between 2.5 and 7.5 using a truncated normal distribution with an SD of 2.0. We'll also allow the SD to vary between 0.5 and 4.0.
+```{r , warning=FALSE, message=FALSE}
+plot_Ri <- function(estimate_R_obj) {
+    p_I <- plot(estimate_R_obj, "incid", add_imported_cases = FALSE)  # plots the incidence
+    p_SI <- plot(estimate_R_obj, "SI")  # plots the serial interval distribution
+    p_Ri <- plot(estimate_R_obj, "R")
+    return(gridExtra::grid.arrange(p_I, p_SI, p_Ri, ncol = 1))
+}
+
+
+ITA_new_res_parametric_si <- estimate_R(i_ITA, 
+    method = "uncertain_si", config = make_config(list(mean_si = 5.2, std_mean_si = 2.5, 
+        min_mean_si = 1, max_mean_si = 7.5, std_si = 2.8, std_std_si = 1, 
+        min_std_si = 0.5, max_std_si = 4, n1 = 1000, n2 = 1000)))
+
+plot_Ri(ITA_new_res_parametric_si)
+```
+
+The conclusion of these two different calculation is that irrespective of the method used to estimate R, this is actually going down and this is a good thing.
+
+And also in this case it is a good thing to see that the R number is decreasing.
+
+## Credits
+
+Credit for the feasibility of this project should be given to the authors of the [**projection**](https://www.repidemicsconsortium.org/projections/) and [**incidence**](https://www.repidemicsconsortium.org/incidence/) packages and to [**Tim Churches**](https://timchurches.github.io/blog/posts/2020-02-18-analysing-covid-19-2019-ncov-outbreak-data-with-r-part-1/) who generated a complete tutorial for the analysis of COVID-19 early in Febraury 2020.
+
+## Session Information
+
+The information related to the session can be retrieved here.
+```{r}
+sessionInfo()
+```
+
+
