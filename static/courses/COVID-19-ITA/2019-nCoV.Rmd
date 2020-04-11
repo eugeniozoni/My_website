@@ -143,7 +143,8 @@ groups<-c(replicate(101, "hospital"), replicate(26, "icu"), replicate(94, "home"
           replicate(28976, "hospital"), replicate(3898, "icu"), replicate(60313, "home"),
           replicate(28718, "hospital"), replicate(3792, "icu"), replicate(61557, "home"),
           replicate(28485, "hospital"), replicate(3693, "icu"), replicate(63084, "home"),
-          replicate(28399, "hospital"), replicate(3605, "icu"), replicate(64873, "home")
+          replicate(28399, "hospital"), replicate(3605, "icu"), replicate(64873, "home"),
+          replicate(28242, "hospital"), replicate(3497, "icu"), replicate(66534, "home")
           )
 df.expanded_total_ITA$groups<-groups
 ```
@@ -247,12 +248,12 @@ pred_ITA_new_before_shut
 plot(pred_ITA_new_before_shut) + labs(title="Future Incidence (R = 2.04) - based on growth of new positive cases in the first 15 days of diffusion")
 
 set.seed(1)
-pred_ITA_new_after_shut <- project(i_ITA[16:46], R = median(growth_R0_after), si = si_ITA_n, n_days = 10, n_sim = 1000)
+pred_ITA_new_after_shut <- project(i_ITA[16:47], R = median(growth_R0_after), si = si_ITA_n, n_days = 10, n_sim = 1000)
 pred_ITA_new_after_shut
 plot(pred_ITA_new_after_shut) + labs(title="Future Incidence (R = 1.04) - based on new positive cases growth after shutdown")
 
 set.seed(1)
-pred_ITA_new_after_peak <- project(i_ITA[27:46], R = median(growth_R0_after_peak), si = si_ITA_n, n_days = 10, n_sim = 1000)
+pred_ITA_new_after_peak <- project(i_ITA[27:47], R = median(growth_R0_after_peak), si = si_ITA_n, n_days = 10, n_sim = 1000)
 pred_ITA_new_after_peak
 plot(pred_ITA_new_after_peak) + labs(title="Future Incidence (R = 0.89) - based on new positive cases growth after peak")
 ```
