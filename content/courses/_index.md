@@ -39,7 +39,7 @@ In this section I have combined some small projects aimed to visualize different
 
 ## Tutorials
 
-Here you will find some basic codes to customize your data. This section is intended as a **cheat sheet** for basic R functions which I think are of interest when approaching R for this first time to prepare your data before ready for processing.
+Here you will find some basic codes to customize your data. This section is intended as a **cheat sheet** for basic R functions which I think are of interest when approaching R for the first time to prepare your data before ready for processing.
 
 ## This Website
 

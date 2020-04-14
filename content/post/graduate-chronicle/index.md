@@ -1,7 +1,7 @@
 ---
 title: 'My life in the Netherlands'
-subtitle: 'Holland has been my first - second home and I was asked once to tell more about my experience in the Netherlands'
-summary: Holland has been my first - second home and I was asked once to tell more about my experience in the Netherlands.
+subtitle: 'Holland has been my first - second home - and I was asked once to tell more about my experience in the Netherlands'
+summary: Holland has been my first - second home - and I was asked once to tell more about my experience in the Netherlands.
 authors:
 - admin
 tags:
