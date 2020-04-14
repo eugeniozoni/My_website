@@ -147,7 +147,8 @@ groups<-c(replicate(101, "hospital"), replicate(26, "icu"), replicate(94, "home"
           replicate(28242, "hospital"), replicate(3497, "icu"), replicate(66534, "home"),
           replicate(28144, "hospital"), replicate(3381, "icu"), replicate(68744, "home"),
           replicate(27847, "hospital"), replicate(3343, "icu"), replicate(71063, "home"),
-          replicate(28023, "hospital"), replicate(3260, "icu"), replicate(72333, "home")
+          replicate(28023, "hospital"), replicate(3260, "icu"), replicate(72333, "home"),
+          replicate(28011, "hospital"), replicate(3186, "icu"), replicate(73094, "home")
           )
 df.expanded_total_ITA$groups<-groups
 ```
@@ -248,17 +249,17 @@ Based on these data we predict future incidence assuming the reproduction number
 set.seed(1)
 pred_ITA_new_before_shut <- project(i_ITA[1:15], R = median(growth_R0_before), si = si_ITA_n, n_days = 10, n_sim = 1000)
 pred_ITA_new_before_shut
-plot(pred_ITA_new_before_shut) + labs(title="Future Incidence (R = 2.04) - based on growth of new positive cases in the first 15 days of diffusion")
+plot(pred_ITA_new_before_shut) + labs(title="Future Incidence - based on growth of new positive cases in the first 15 days of diffusion")
 
 set.seed(1)
-pred_ITA_new_after_shut <- project(i_ITA[16:48], R = median(growth_R0_after), si = si_ITA_n, n_days = 10, n_sim = 1000)
+pred_ITA_new_after_shut <- project(i_ITA[16:51], R = median(growth_R0_after), si = si_ITA_n, n_days = 10, n_sim = 1000)
 pred_ITA_new_after_shut
-plot(pred_ITA_new_after_shut) + labs(title="Future Incidence (R = 1.04) - based on new positive cases growth after shutdown")
+plot(pred_ITA_new_after_shut) + labs(title="Future Incidence - based on new positive cases growth after shutdown")
 
 set.seed(1)
-pred_ITA_new_after_peak <- project(i_ITA[27:48], R = median(growth_R0_after_peak), si = si_ITA_n, n_days = 10, n_sim = 1000)
+pred_ITA_new_after_peak <- project(i_ITA[27:51], R = median(growth_R0_after_peak), si = si_ITA_n, n_days = 10, n_sim = 1000)
 pred_ITA_new_after_peak
-plot(pred_ITA_new_after_peak) + labs(title="Future Incidence (R = 0.89) - based on new positive cases growth after peak")
+plot(pred_ITA_new_after_peak) + labs(title="Future Incidence - based on new positive cases growth after peak")
 ```
 
 We can add on the real incidence data the projection:
