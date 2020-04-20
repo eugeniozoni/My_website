@@ -1,7 +1,7 @@
 
 ## My personal website
 
-This is my personal website: https://eugeniozoni.netlify.com/ and was built with R blogdown and powered by [**Academic**](https://github.com/gcushen/hugo-academic). 
+This is my personal website: https://eugeniozoni.com/ and was built with R blogdown and powered by [**Academic**](https://github.com/gcushen/hugo-academic). 
 
 You can read more about **Academic** and its creator George Cushen below. 
 
