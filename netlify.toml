@@ -24,3 +24,11 @@
   for = "index.xml"
   [headers.values]
     Content-Type = "application/rss+xml"
+	
+[[redirects]]
+  from = "https://eugeniozoni.netlify.app/"
+  to = "https://eugeniozoni.com/"
+  status = 301
+  force = false
+  
+

@@ -86,12 +86,12 @@ mydata_ITA
 
 Then we need to format the data in a suitable format to generate the `incidence` object. For this we make a new df. This df will have a number of rows equal to the `new_positive_up_to_date` column. In other words, we need to have a df where each row corresponds to one patient.
 ```{r , warning=FALSE, message=FALSE}
-df.expanded_ITA <- mydata_ITA[rep(row.names(mydata_ITA), mydata_ITA$new_positive_up_to_date), 2:16]
+df.expanded_ITA <- mydata_ITA[rep(row.names(mydata_ITA), mydata_ITA$new_positive_up_to_date), 2:17]
 ```
 
 We also make another df with the same logic above, but we use the `positive_total_up_to_date` column instead. This df will be used to subset the patient based on their current condition.
 ```{r , warning=FALSE, message=FALSE}
-df.expanded_total_ITA <- mydata_ITA[rep(row.names(mydata_ITA), mydata_ITA$positive_total_up_to_date), 2:16]
+df.expanded_total_ITA <- mydata_ITA[rep(row.names(mydata_ITA), mydata_ITA$positive_total_up_to_date), 2:17]
 ```
 
 Then we create a new column `groups` where we subset the data of the **new cases** by three categories: * **hospital** : here we include the patients identified as *hospitalized_symptomatic*
@@ -153,7 +153,8 @@ groups<-c(replicate(101, "hospital"), replicate(26, "icu"), replicate(94, "home"
           replicate(26893, "hospital"), replicate(2936, "icu"), replicate(76778, "home"),
           replicate(25786, "hospital"), replicate(2812, "icu"), replicate(78364, "home"),
           replicate(25007, "hospital"), replicate(2733, "icu"), replicate(80031, "home"),
-          replicate(25033, "hospital"), replicate(2635, "icu"), replicate(80589, "home")
+          replicate(25033, "hospital"), replicate(2635, "icu"), replicate(80589, "home"),
+          replicate(24906, "hospital"), replicate(2573, "icu"), replicate(80758, "home")
         )
 df.expanded_total_ITA$groups<-groups
 ```
@@ -257,12 +258,12 @@ pred_ITA_new_before_shut
 plot(pred_ITA_new_before_shut) + labs(title="Future Incidence - based on growth of new positive cases in the first 15 days of diffusion")
 
 set.seed(1)
-pred_ITA_new_after_shut <- project(i_ITA[16:56], R = median(growth_R0_after), si = si_ITA_n, n_days = 10, n_sim = 1000)
+pred_ITA_new_after_shut <- project(i_ITA[16:57], R = median(growth_R0_after), si = si_ITA_n, n_days = 10, n_sim = 1000)
 pred_ITA_new_after_shut
 plot(pred_ITA_new_after_shut) + labs(title="Future Incidence - based on new positive cases growth after shutdown")
 
 set.seed(1)
-pred_ITA_new_after_peak <- project(i_ITA[27:56], R = median(growth_R0_after_peak), si = si_ITA_n, n_days = 10, n_sim = 1000)
+pred_ITA_new_after_peak <- project(i_ITA[27:57], R = median(growth_R0_after_peak), si = si_ITA_n, n_days = 10, n_sim = 1000)
 pred_ITA_new_after_peak
 plot(pred_ITA_new_after_peak) + labs(title="Future Incidence - based on new positive cases growth after peak")
 ```
