@@ -170,7 +170,12 @@ groups<-c(replicate(101, "hospital"), replicate(26, "icu"), replicate(94, "home"
           replicate(17242, "hospital"), replicate(1501, "icu"), replicate(81436, "home"),
           replicate(16823, "hospital"), replicate(1479, "icu"), replicate(81678, "home"),
           replicate(16270, "hospital"), replicate(1427, "icu"), replicate(80770, "home"),
-          replicate(15769, "hospital"), replicate(1333, "icu"), replicate(74426, "home")
+          replicate(15769, "hospital"), replicate(1333, "icu"), replicate(74426, "home"),
+          replicate(15174, "hospital"), replicate(1311, "icu"), replicate(73139, "home"),
+          replicate(14636, "hospital"), replicate(1168, "icu"), replicate(72157, "home"),
+          replicate(13834, "hospital"), replicate(1034, "icu"), replicate(69974, "home"),
+          replicate(13618, "hospital"), replicate(1027, "icu"), replicate(68679, "home"),
+          replicate(13539, "hospital"), replicate(999, "icu"), replicate(67950, "home")
                   )
 df.expanded_total_ITA$groups<-groups
 ```
@@ -274,12 +279,12 @@ pred_ITA_new_before_shut
 plot(pred_ITA_new_before_shut) + labs(title="Future Incidence - based on growth of new positive cases in the first 15 days of diffusion")
 
 set.seed(1)
-pred_ITA_new_after_shut <- project(i_ITA[16:73], R = median(growth_R0_after), si = si_ITA_n, n_days = 10, n_sim = 1000)
+pred_ITA_new_after_shut <- project(i_ITA[16:78], R = median(growth_R0_after), si = si_ITA_n, n_days = 10, n_sim = 1000)
 pred_ITA_new_after_shut
 plot(pred_ITA_new_after_shut) + labs(title="Future Incidence - based on new positive cases growth after shutdown")
 
 set.seed(1)
-pred_ITA_new_after_peak <- project(i_ITA[27:73], R = median(growth_R0_after_peak), si = si_ITA_n, n_days = 10, n_sim = 1000)
+pred_ITA_new_after_peak <- project(i_ITA[27:78], R = median(growth_R0_after_peak), si = si_ITA_n, n_days = 10, n_sim = 1000)
 pred_ITA_new_after_peak
 plot(pred_ITA_new_after_peak) + labs(title="Future Incidence - based on new positive cases growth after peak")
 ```
