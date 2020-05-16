@@ -98,85 +98,10 @@ Then we create a new column `groups` where we subset the data of the **new cases
 * **icu** : here we include the patients in intensive care (*icu*)
 * **home** : here we include the patients that are in *quarantine_home*
 ```{r , warning=FALSE, message=FALSE}
-groups<-c(replicate(101, "hospital"), replicate(26, "icu"), replicate(94, "home"),
-          replicate(114, "hospital"), replicate(35, "icu"), replicate(162, "home"),
-          replicate(128, "hospital"), replicate(36, "icu"), replicate(221, "home"),
-          replicate(248, "hospital"), replicate(56, "icu"), replicate(284, "home"),
-          replicate(345, "hospital"), replicate(64, "icu"), replicate(412, "home"),
-          replicate(401, "hospital"), replicate(105, "icu"), replicate(543, "home"),
-          replicate(639, "hospital"), replicate(140, "icu"), replicate(798, "home"),
-          replicate(742, "hospital"), replicate(166, "icu"), replicate(927, "home"),
-          replicate(1034, "hospital"), replicate(229, "icu"), replicate(1000, "home"),
-          replicate(1346, "hospital"), replicate(295, "icu"), replicate(1065, "home"),
-          replicate(1790, "hospital"), replicate(351, "icu"), replicate(1155, "home"),
-          replicate(2394, "hospital"), replicate(462, "icu"), replicate(1060, "home"),
-          replicate(2651, "hospital"), replicate(567, "icu"), replicate(1843, "home"),
-          replicate(3557, "hospital"), replicate(650, "icu"), replicate(2180, "home"),
-          replicate(4316, "hospital"), replicate(733, "icu"), replicate(2936, "home"),
-          replicate(5038, "hospital"), replicate(877, "icu"), replicate(2599, "home"),
-          replicate(5838, "hospital"), replicate(1028, "icu"), replicate(3724, "home"),
-          replicate(6650, "hospital"), replicate(1153, "icu"), replicate(5036, "home"),
-          replicate(7426, "hospital"), replicate(1328, "icu"), replicate(6201, "home"),
-          replicate(8372, "hospital"), replicate(1518, "icu"), replicate(7860, "home"),
-          replicate(9663, "hospital"), replicate(1672, "icu"), replicate(9268, "home"),
-          replicate(11025, "hospital"), replicate(1851, "icu"), replicate(10197, "home"),
-          replicate(12894, "hospital"), replicate(2060, "icu"), replicate(11108, "home"),
-          replicate(14363, "hospital"), replicate(2257, "icu"), replicate(12090, "home"),
-          replicate(15757, "hospital"), replicate(2498, "icu"), replicate(14935, "home"),
-          replicate(16020, "hospital"), replicate(2655, "icu"), replicate(19185, "home"),
-          replicate(17708, "hospital"), replicate(2857, "icu"), replicate(22116, "home"),
-          replicate(19846, "hospital"), replicate(3009, "icu"), replicate(23783, "home"),
-          replicate(20692, "hospital"), replicate(3204, "icu"), replicate(26522, "home"),
-          replicate(21937, "hospital"), replicate(3396, "icu"), replicate(28697, "home"),
-          replicate(23112, "hospital"), replicate(3489, "icu"), replicate(30920, "home"),
-          replicate(24753, "hospital"), replicate(3612, "icu"), replicate(33648, "home"),
-          replicate(26029, "hospital"), replicate(3732, "icu"), replicate(36653, "home"),
-          replicate(26676, "hospital"), replicate(3856, "icu"), replicate(39533, "home"),
-          replicate(27386, "hospital"), replicate(3906, "icu"), replicate(42588, "home"),
-          replicate(27795, "hospital"), replicate(3981, "icu"), replicate(43752, "home"),
-          replicate(28192, "hospital"), replicate(4023, "icu"), replicate(45420, "home"),
-          replicate(28403, "hospital"), replicate(4035, "icu"), replicate(48134, "home"),
-          replicate(28540, "hospital"), replicate(4053, "icu"), replicate(50456, "home"),
-          replicate(28741, "hospital"), replicate(4068, "icu"), replicate(52579, "home"),
-          replicate(29010, "hospital"), replicate(3994, "icu"), replicate(55270, "home"),
-          replicate(28949, "hospital"), replicate(3977, "icu"), replicate(58320, "home"),
-          replicate(28976, "hospital"), replicate(3898, "icu"), replicate(60313, "home"),
-          replicate(28718, "hospital"), replicate(3792, "icu"), replicate(61557, "home"),
-          replicate(28485, "hospital"), replicate(3693, "icu"), replicate(63084, "home"),
-          replicate(28399, "hospital"), replicate(3605, "icu"), replicate(64873, "home"),
-          replicate(28242, "hospital"), replicate(3497, "icu"), replicate(66534, "home"),
-          replicate(28144, "hospital"), replicate(3381, "icu"), replicate(68744, "home"),
-          replicate(27847, "hospital"), replicate(3343, "icu"), replicate(71063, "home"),
-          replicate(28023, "hospital"), replicate(3260, "icu"), replicate(72333, "home"),
-          replicate(28011, "hospital"), replicate(3186, "icu"), replicate(73094, "home"),
-          replicate(27643, "hospital"), replicate(3079, "icu"), replicate(74696, "home"),
-          replicate(26893, "hospital"), replicate(2936, "icu"), replicate(76778, "home"),
-          replicate(25786, "hospital"), replicate(2812, "icu"), replicate(78364, "home"),
-          replicate(25007, "hospital"), replicate(2733, "icu"), replicate(80031, "home"),
-          replicate(25033, "hospital"), replicate(2635, "icu"), replicate(80589, "home"),
-          replicate(24906, "hospital"), replicate(2573, "icu"), replicate(80758, "home"),
-          replicate(24134, "hospital"), replicate(2471, "icu"), replicate(81104, "home"),
-          replicate(23805, "hospital"), replicate(2384, "icu"), replicate(81510, "home"),
-          replicate(22871, "hospital"), replicate(2267, "icu"), replicate(81710, "home"),
-          replicate(22068, "hospital"), replicate(2173, "icu"), replicate(82286, "home"),
-          replicate(21533, "hospital"), replicate(2102, "icu"), replicate(82212, "home"),
-          replicate(21372, "hospital"), replicate(2009, "icu"), replicate(82722, "home"),
-          replicate(20353, "hospital"), replicate(1956, "icu"), replicate(83504, "home"),
-          replicate(19723, "hospital"), replicate(1863, "icu"), replicate(83619, "home"),
-          replicate(19210, "hospital"), replicate(1795, "icu"), replicate(83652, "home"),
-          replicate(18149, "hospital"), replicate(1694, "icu"), replicate(81708, "home"),
-          replicate(17569, "hospital"), replicate(1578, "icu"), replicate(81796, "home"),
-          replicate(17357, "hospital"), replicate(1539, "icu"), replicate(81808, "home"),
-          replicate(17242, "hospital"), replicate(1501, "icu"), replicate(81436, "home"),
-          replicate(16823, "hospital"), replicate(1479, "icu"), replicate(81678, "home"),
-          replicate(16270, "hospital"), replicate(1427, "icu"), replicate(80770, "home"),
-          replicate(15769, "hospital"), replicate(1333, "icu"), replicate(74426, "home"),
-          replicate(15174, "hospital"), replicate(1311, "icu"), replicate(73139, "home"),
-          replicate(14636, "hospital"), replicate(1168, "icu"), replicate(72157, "home"),
-          replicate(13834, "hospital"), replicate(1034, "icu"), replicate(69974, "home"),
-          replicate(13618, "hospital"), replicate(1027, "icu"), replicate(68679, "home"),
-          replicate(13539, "hospital"), replicate(999, "icu"), replicate(67950, "home")
-                  )
+for_vector<-select(mydata_ITA, hospitalized_symptomatic, icu, quarantine_home)
+vector<-c(t(for_vector))
+groups<-rep(c("hospital", "icu", "home"), length(vector)/3)
+groups<-rep(groups, vector)
 df.expanded_total_ITA$groups<-groups
 ```
 
@@ -225,7 +150,6 @@ late.fit_ITA <-  incidence::fit(i_ITA, split = as.Date("2020-03-21"))
 plot(i_ITA, fit =late.fit_ITA) + labs(title = "Observed and modelled incidence of COVID-19", subtitle = "Total new positive cases up to date - ITA")
 late.fit_ITA
 ```
-
 
 ## Serial Interval
 
@@ -279,12 +203,12 @@ pred_ITA_new_before_shut
 plot(pred_ITA_new_before_shut) + labs(title="Future Incidence - based on growth of new positive cases in the first 15 days of diffusion")
 
 set.seed(1)
-pred_ITA_new_after_shut <- project(i_ITA[16:78], R = median(growth_R0_after), si = si_ITA_n, n_days = 10, n_sim = 1000)
+pred_ITA_new_after_shut <- project(i_ITA[-(1:15)], R = median(growth_R0_after), si = si_ITA_n, n_days = 10, n_sim = 1000)
 pred_ITA_new_after_shut
 plot(pred_ITA_new_after_shut) + labs(title="Future Incidence - based on new positive cases growth after shutdown")
 
 set.seed(1)
-pred_ITA_new_after_peak <- project(i_ITA[27:78], R = median(growth_R0_after_peak), si = si_ITA_n, n_days = 10, n_sim = 1000)
+pred_ITA_new_after_peak <- project(i_ITA[-(1:26)], R = median(growth_R0_after_peak), si = si_ITA_n, n_days = 10, n_sim = 1000)
 pred_ITA_new_after_peak
 plot(pred_ITA_new_after_peak) + labs(title="Future Incidence - based on new positive cases growth after peak")
 ```

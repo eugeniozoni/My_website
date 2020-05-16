@@ -40,7 +40,7 @@ date_format = "Jan 2006"
   * Writing reports
   * Writing research publications
   * Writing grants
-  * Deputy for animal studies
+  * Deputy study director for animal studies
   """
 
 [[experience]]
