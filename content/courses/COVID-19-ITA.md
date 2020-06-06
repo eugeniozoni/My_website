@@ -3,7 +3,7 @@ title: COVID-19 ITA
 linktitle: COVID-19 ITA
 toc: true
 type: docs
-date: "2020-06-04T00:00:00+01:00"
+date: "2020-06-06T00:00:00+01:00"
 draft: false
 menu:
   example:
