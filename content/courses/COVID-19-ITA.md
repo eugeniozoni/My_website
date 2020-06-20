@@ -3,7 +3,7 @@ title: COVID-19 ITA
 linktitle: COVID-19 ITA
 toc: true
 type: docs
-date: "2020-06-14T00:00:00+01:00"
+date: "2020-06-20T00:00:00+01:00"
 draft: false
 menu:
   example:
@@ -40,7 +40,7 @@ In this plot I modelled the incidence based on the new daily cases. I used a log
 
 In this plot you can visualize the epidemic curve (top panel), the serial interval distribution used to model the incidence (middle panel) and the estimated R0 (lower panel).
 
-The conclusion of this calculation is that the R number is decreasing.
+The conclusion of this calculation is that the R number decreased during lockdown, however, upon re-opening, the R number started to grow again in the first half of June 2020.
 
 ## **Credits**
 
