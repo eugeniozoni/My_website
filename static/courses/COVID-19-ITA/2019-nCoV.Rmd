@@ -86,12 +86,12 @@ mydata_ITA
 
 Then we need to format the data in a suitable format to generate the `incidence` object. For this we make a new df. This df will have a number of rows equal to the `new_positive_up_to_date` column. In other words, we need to have a df where each row corresponds to one patient.
 ```{r , warning=FALSE, message=FALSE}
-df.expanded_ITA <- mydata_ITA[rep(row.names(mydata_ITA), mydata_ITA$new_positive_up_to_date), 2:18]
+df.expanded_ITA <- mydata_ITA[rep(row.names(mydata_ITA), mydata_ITA$new_positive_up_to_date), 2:21]
 ```
 
 We also make another df with the same logic above, but we use the `positive_total_up_to_date` column instead. This df will be used to subset the patient based on their current condition.
 ```{r , warning=FALSE, message=FALSE}
-df.expanded_total_ITA <- mydata_ITA[rep(row.names(mydata_ITA), mydata_ITA$positive_total_up_to_date), 2:18]
+df.expanded_total_ITA <- mydata_ITA[rep(row.names(mydata_ITA), mydata_ITA$positive_total_up_to_date), 2:21]
 ```
 
 Then we create a new column `groups` where we subset the data of the **new cases** by three categories: * **hospital** : here we include the patients identified as *hospitalized_symptomatic*
