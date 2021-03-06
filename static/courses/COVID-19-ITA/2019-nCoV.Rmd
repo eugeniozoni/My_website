@@ -31,7 +31,7 @@ In this workflow we employ standard functions within the *projections* and *inci
 library(projections)
 library(incidence)
 library(outbreaks)
-library(RCurl)
+library(readr)
 library(dplyr)
 library(ggplot2)
 library(distcrete)
@@ -51,8 +51,7 @@ getwd()
 Data related to current situation in Italy are updated daily by the italian "Protezione Civile" and downloaded from here: https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv. First we load the data in R and we save them as `.csv` file.
 ```{r , warning=FALSE, message=FALSE}
 URL <- "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv"
-x <- getURL(URL)
-covid_19_ITA <- read.csv(textConnection(x))
+covid_19_ITA <- read_csv(url(URL))
 write.csv(`covid_19_ITA`, "covid_19_ITA.csv")
 ```
 
@@ -79,19 +78,18 @@ mydata_ITA<-dplyr::rename(covid_19_ITA,
 
 The dates include time (hrs). Therefore, we remove the string related to time of the day when data are published.
 ```{r , warning = FALSE, message=FALSE}
-mydata_ITA <- mydata_ITA %>%
-  dplyr::mutate(dates = gsub(pattern = "T.*", replacement = "", dates_D_T))
+mydata_ITA <- dplyr::mutate(mydata_ITA, dates = gsub(pattern = "T.*", replacement = "", dates_D_T))
 mydata_ITA
 ```
 
 Then we need to format the data in a suitable format to generate the `incidence` object. For this we make a new df. This df will have a number of rows equal to the `new_positive_up_to_date` column. In other words, we need to have a df where each row corresponds to one patient.
 ```{r , warning=FALSE, message=FALSE}
-df.expanded_ITA <- mydata_ITA[rep(row.names(mydata_ITA), mydata_ITA$new_positive_up_to_date), 2:21]
+df.expanded_ITA <- mydata_ITA[rep(row.names(mydata_ITA), mydata_ITA$new_positive_up_to_date), 2:25]
 ```
 
 We also make another df with the same logic above, but we use the `positive_total_up_to_date` column instead. This df will be used to subset the patient based on their current condition.
 ```{r , warning=FALSE, message=FALSE}
-df.expanded_total_ITA <- mydata_ITA[rep(row.names(mydata_ITA), mydata_ITA$positive_total_up_to_date), 2:21]
+df.expanded_total_ITA <- mydata_ITA[rep(row.names(mydata_ITA), mydata_ITA$positive_total_up_to_date), 2:25]
 ```
 
 Then we create a new column `groups` where we subset the data of the **new cases** by three categories: * **hospital** : here we include the patients identified as *hospitalized_symptomatic*
