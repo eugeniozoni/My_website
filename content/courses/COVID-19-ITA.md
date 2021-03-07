@@ -8,10 +8,10 @@ draft: false
 menu:
   example:
     parent: Data analysis with R
-    weight: 1
+    weight: 2
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 
+weight: 2
 ---
 
 The **AIM** of this project is to model the incidence and calculate the [basic reproduction number (R0)](https://en.wikipedia.org/wiki/Basic_reproduction_number) for [COVID-19](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)30183-5/fulltext) in Italy. 

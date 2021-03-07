@@ -8,10 +8,10 @@ draft: false
 menu:
   example:
     parent: Data visualization with R
-    weight: 2
+    weight: 3
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 
+weight: 3
 ---
 
 In this small project I wanted to generate a wordcloud from the keywords of my scientific publications, to visualize all my scientific work in one figure.

@@ -8,10 +8,10 @@ draft: false
 menu:
   example:
     parent: Tutorials
-    weight: 3
+    weight: 4
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 
+weight: 4
 ---
 
 This section is under construction.

@@ -51,7 +51,7 @@ tags:
 - Prostate cancer
 - Patient derived xenograft
 - PNPCA
-- BM19
+- BM18
 - LAPC9
 - BRCA2
 - SPOP

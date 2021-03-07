@@ -8,10 +8,10 @@ draft: false
 menu:
   example:
     parent: This website
-    weight: 4
+    weight: 5
 
 # Prev/next pager order (if `docs_section_pager` enabled in `params.toml`)
-weight: 
+weight: 5
 ---
 
 In this page, I will illustrate some steps which brought me to generate my personal website, completely for free and in relatively small time.
