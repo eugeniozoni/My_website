@@ -55,6 +55,12 @@ covid_19_ITA <- read_csv(url(URL))
 write.csv(`covid_19_ITA`, "covid_19_ITA.csv")
 ```
 
+```{r}
+test <- c("test", "testb")
+```
+
+
+
 ## Clean-up the data
 
 We rename columns:
