@@ -10,7 +10,7 @@ authors:
 superuser: true
 
 # Role/position
-role: Postdoctoral Researcher
+role: Junior Group Leader
 
 # Organizations/Affiliations
 organizations:
@@ -74,6 +74,6 @@ email: ""
 #- Visitors
 ---
 
-I am a postdoctoral researcher at the [**Urology Research Laboratory**](https://www.urogenus-research.org/), Department for BioMedical Research, University of Bern. My research interests include cancer biology, metabolomics and data analysis and visualization.
+I am a Junior Group Leader at the [**Urology Research Laboratory**](https://www.urogenus-research.org/), Department for BioMedical Research, University of Bern. My research interests include cancer biology, metabolomics and data analysis and visualization.
 
 Beside research, I like to fix things and set-up small mechanical projects to maintain my car and motorcycle. I also like to work on home improvement to refurbish and maximize spaces in our tiny apartment.

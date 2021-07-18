@@ -25,22 +25,49 @@ date_format = "Jan 2006"
 #   Leave `date_end` empty if it's your current employer.
 #   Begin/end multi-line descriptions with 3 quotes `"""`.
 [[experience]]
-  title = "Postdoctoral researcher"
+  title = "Junior Group Leader"
   company = "Bern University"
   company_url = ""
   location = "Switzerland"
-  date_start = "2016-07-01"
+  date_start = "2021-04-01"
   date_end = ""
   description = """
   Responsibilities include:
   
-  * Performing experiments
-  * Analysing results
-  * Supervising master and graduate students
-  * Writing reports
-  * Writing research publications
-  * Writing grants
-  * Deputy study director for animal studies
+  * Deputy director for animal studies, translational in vivo research in the personalized medicine framework.
+  * Managing 4 different international research projects.
+  * Coordinating: 2 lab technicians and running process of bioluminescent imaging (BLI).
+  """
+
+[[experience]]
+  title = "Research Associate"
+  company = "Bern University"
+  company_url = ""
+  location = "Switzerland"
+  date_start = "2019-08-01"
+  date_end = "2021-03-01"
+  description = """
+  Responsibilities include:
+  
+  * Conduct preclinical experimental research, in collaboration with Urology Clinic, INSELSpital.
+  * Analyzing results.
+  * Supervising master and graduate students.
+  * Identify source of funding and outline the short-, mid-, and long-term plan of future research projects.
+  """
+
+[[experience]]
+  title = "Early Career Researcher"
+  company = "Bern University"
+  company_url = ""
+  location = "Switzerland"
+  date_start = "2016-07-01"
+  date_end = "2019-07-01"
+  description = """
+  Responsibilities include:
+  
+  * Conduct basic and preclinical experimental research.
+  * Analyzing results.
+  * Supervising master and graduate students.
   """
 
 [[experience]]
@@ -53,8 +80,8 @@ date_format = "Jan 2006"
   description = """
   Responsibilities include:
   
-  * Analysing MALDI-MSI data
-  * Familiarizing with MALDI-MSI
+  * Analysing MALDI-MSI data.
+  * Familiarizing with MALDI-MSI.
   """
   
 [[experience]]
@@ -67,12 +94,12 @@ date_format = "Jan 2006"
   description = """
   Responsibilities include:
   
-  * Performing experiments
-  * Analysing results
-  * Supervising master students
-  * Writing reports
-  * Writing research publications
-  * Organizing conferences
+  * Performing experiments.
+  * Analysing results.
+  * Supervising master students.
+  * Writing reports.
+  * Writing research publications.
+  * Organizing conferences.
   """
   
 [[experience]]
@@ -85,9 +112,9 @@ date_format = "Jan 2006"
   description = """
   Responsibilities include:
   
-  * Performing experiments
-  * Analysing results
-  * Supporting research activities
+  * Performing experiments.
+  * Analysing results.
+  * Supporting research activities.
   """
 
 
